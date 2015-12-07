@@ -96,6 +96,25 @@
                         </requireloginredirect>
                     </fields>
                 </requirelogin>
+                <exemptips>
+                    <label>Exempt IP Addresses for Login</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <ipaddresses translate="label comment">
+                            <label>Allowed IP's</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[List of IP Addresses seperated by comma. ie: 8.8.4.4,4.4.4.4]]></comment>
+                        </ipaddresses>
+                    </fields>
+                </exemptips>
                 <activatebycategorysettings translate="label comment">
                     <label>Activate by category</label>
                     <frontend_type>text</frontend_type>

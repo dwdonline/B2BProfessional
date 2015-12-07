@@ -18,6 +18,11 @@ class Sitewards_B2BProfessional_Helper_Customer extends Sitewards_B2BProfessiona
     const CONFIG_EXTENSION_REQUIRES_LOGIN = 'b2bprofessional/requirelogin/requirelogin';
 
     /**
+     * Path for the config for extension allowed ip addresses that don't need to login
+     */
+    //const CONFIG_EXTENSION_REQUIRES_LOGIN_IPADDRESSES = 'b2bprofessional/exemptips/ipaddresses';
+
+    /**
      * Path for the config for extension is active by customer group
      */
     const CONFIG_EXTENSION_ACTIVE_BY_CUSTOMER_GROUP = 'b2bprofessional/activatebycustomersettings/activebycustomer';
@@ -157,7 +162,17 @@ class Sitewards_B2BProfessional_Helper_Customer extends Sitewards_B2BProfessiona
      */
     public function isLoginRequired()
     {
+      //added by Philip pd@dwdonline.com DWD
+      $allowedIPAddresses = Mage::getStoreConfig('b2bprofessional/exemptips/ipaddresses');
+      $ip = $_SERVER['REMOTE_ADDR'];
+      $allowed = explode(",",$allowedIPAddresses);
+
+      if (in_array($ip, $allowed)) {
+        return $this->getStoreFlag('0', 'bLoginRequired');
+      } else {
         return $this->getStoreFlag(self::CONFIG_EXTENSION_REQUIRES_LOGIN, 'bLoginRequired');
+      }
+      //end added by Philip pd@dwdonline.com DWD
     }
 
     /**
